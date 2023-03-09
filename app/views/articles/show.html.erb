@@ -1,2 +1,11 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<h1>showing articles details</h1>
+
+<!-- embedded ruby code if don't put = it evaluate that code 
+                                     it doesn't say anything about displaying
+                                    = this means evaluate and render to the screen -->
+
+<p><%=@article.title%></p>         
+<p><%=@article.description%></p>
+<%= link_to 'Edit', edit_article_path(@article) , data: { confirm: "Are you sure?" }%> | 
+        <td><%= link_to 'Delete', article_path(@article), method: :delete %></td> | 
+<%= link_to 'articles listing ', articles_path%>
