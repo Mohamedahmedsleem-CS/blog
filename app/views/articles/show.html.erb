@@ -1,9 +1,22 @@
-<h1>showing articles details</h1>
+<h2 class="text-center mt-4"> <%= @article.title %></h2>
+<div class="container" >
 
-<!-- embedded ruby code if don't put = it evaluate that code 
-                                     it doesn't say anything about displaying
-                                    = this means evaluate and render to the screen -->
-
-<p><%=@article.title%></p>         
-<p><%=@article.description%></p>
-<%= link_to 'Edit', edit_article_path(@article) , data: { confirm: "Are you sure?" }%>|<%= link_to 'Delete', article_path(@article), method: :delete , data: {confirm: "Are you sure?"}%>|<%= link_to 'articles listing ', articles_path%>
+   <div class="row justify-content-md-center" > 
+    <div class="col-8 mt-4"><!-- margin 4 space  -->
+      <div class="card text-center shadow  mb-5 bg-white rounded">
+        <div class="card-header font-italic">
+          Ali Ahmed
+        </div>
+        <div class="card-body">
+          <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+          <%= link_to 'Edit', edit_article_path(@article),class: "btn btn-outline-info" %>
+          <%= link_to 'Delete', article_path(@article), method: :delete,data: {confirm: "Are you sure?"} ,class: "btn btn-outline-danger" %>
+        </div>
+        <div class="card-footer text-muted">
+         <small> Created <%=time_ago_in_words(@article.created_at) %> ago
+         , edited <%= time_ago_in_words(@article.updated_at) %> ago </small>
+        </div>
+      </div>
+    </div>
+   </div> 
+</div>
