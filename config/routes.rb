@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+=begin
+  
+
+  
+
   # Defines the root path route ("/")
   # root "articles#index"
 
@@ -7,9 +12,18 @@ Rails.application.routes.draw do
   #  delete 'articles/:id' , to: 'articles#destroy'
   # delete 'articles/:id/delete' => 'articles#destroy', as: 'articles_delete'
   # get '/articles/:id/delete' => 'articles#destroy'
-   root 'pages#home'
-   get 'about', to: 'pages#about'
+=end
+
+  root 'pages#home'
+  get 'about', to: 'pages#about'
   resources :articles
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
 
 =begin
   REST - Representational state transfer - mapping HTTP verbs (get, post, put/patch, delete)  
