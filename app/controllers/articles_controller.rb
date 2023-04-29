@@ -14,7 +14,10 @@ before_action :require_same_user, only: [:edit, :update]
     end
     def index
       # redirect_to root_path if !logged_in?
-      @articles = Article.paginate(page: params[:page], per_page: 5)
+      # @articles = Article.paginate(page: params[:page], per_page: 5)
+
+      @q = Article.paginate(page: params[:page], per_page: 3).ransack(params[:q])
+      @articles = @q.result(distinct: true)
     end 
 
     def new
