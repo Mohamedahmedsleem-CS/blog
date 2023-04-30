@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  load_and_authorize_resource
+load_and_authorize_resource
+before_action :set_search
 before_action :set_article, only: [:show, :edit, :update, :destroy]
 before_action :require_user, except: [:show, :index]
 before_action :require_same_user, only: [:edit, :update]
@@ -14,10 +15,9 @@ before_action :require_same_user, only: [:edit, :update]
     end
     def index
       # redirect_to root_path if !logged_in?
-      # @articles = Article.paginate(page: params[:page], per_page: 5)
-
-      @q = Article.paginate(page: params[:page], per_page: 3).ransack(params[:q])
-      @articles = @q.result(distinct: true)
+       @articles = Article.paginate(page: params[:page], per_page: 5)
+      # @q = Article.paginate(page: params[:page], per_page: 3).ransack(params[:q])
+       @articles = @q.result(distinct: true)
     end 
 
     def new
@@ -68,6 +68,10 @@ before_action :require_same_user, only: [:edit, :update]
         redirect_to @article 
       end
     end
+
+    # def set_search
+    #   @q = Article.paginate(page: params[:page], per_page: 3).ransack(params[:q])  
+    # end
 
 
 

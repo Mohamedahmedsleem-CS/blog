@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+before_action :set_search
 	def new
 		
 	end

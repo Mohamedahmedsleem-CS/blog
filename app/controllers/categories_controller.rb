@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-	
+	before_action :set_search
 	def new
 		
 	end
