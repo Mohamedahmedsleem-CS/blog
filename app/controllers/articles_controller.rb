@@ -14,13 +14,16 @@ before_action :require_same_user, only: [:edit, :update]
     # byebug
     end
     def index
-        @articles=Article.filter(filtering_params).paginate(page: params[:page], per_page: 3)
+        @pagy,@articles=pagy(Article.filter(filtering_params))
+=begin
+      # @pagy,@articles=pagy(Article.filter(filtering_params),items: 3)
 
       # redirect_to root_path if !logged_in?
       #  @articles = Article.paginate(page: params[:page], per_page: 5)
       # # @q = Article.paginate(page: params[:page], per_page: 3).ransack(params[:q])
       #  @articles = @q.result(distinct: true)
-    end 
+=end
+    end
 
     def new
       @article =Article.new # initiat an @article instance variable for (@article.errors.any?) 

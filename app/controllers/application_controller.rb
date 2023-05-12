@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	include Pagy::Backend
 
 	helper_method :current_user, :logged_in?,:set_searcher
 	def current_user
