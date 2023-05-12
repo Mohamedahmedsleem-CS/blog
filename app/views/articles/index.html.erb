@@ -2,12 +2,25 @@
 <div class="row justify-content-md-center">
   <!-- <%= render 'articles/search_form.html.erb' %> -->
 </div>
+
+
+<%= form_tag(articles_path, method: 'get') do %>
+  <%= text_field_tag(:title, params[:title] , class: "form-control" , placeholder: "Need search by title") %>
+  <%= text_field_tag(:description, params[:description] , class: "form-control" , placeholder: "Need search by description") %>
+
+ <div class="form-group row justify-content-md-center">
+  <%= submit_tag  %>
+</div>
+<% end %>
+
+
+
 <div class="flickr_pagination">
- <%= will_paginate @articles, :container => false %>
+<%= will_paginate @articles, :container => false %>
 </div>
 
 <%= render 'articles/article' %>
 
 <div class="flickr_pagination mb-4 ">
- <%= will_paginate @articles, :container => false %>
+<%= will_paginate @articles, :container => false %>
 </div>
